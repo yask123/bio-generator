@@ -23,7 +23,7 @@ export default function App() {
           <Text style={{ color: 'black', fontSize: 33, textAlign: 'center', fontFamily: 'Helvetica' }}>" {BIOS[index]} "</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ flex: 1, backgroundColor: '#abf0e9', alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, backgroundColor: '#abf0e9', flexDirection:'column',  justifyContent: 'center' }}>
         <Button title='Generate' containerViewStyle={{ width: '100%' }} color='#0779e4' titleStyle={{
           color: "white",
           fontSize: 25,
@@ -40,6 +40,14 @@ export default function App() {
           }
         }
         > </Button>
+
+        <Button title='Copy to clipboard' containerViewStyle={{ width: '100%' }} color='#0779e4' titleStyle={{
+          color: "white",
+          fontSize: 25,
+          padding: 12,
+          paddingBottom: 10,
+          paddingTop: 10,
+        }}></Button>
       </View>
     </View>
   );
