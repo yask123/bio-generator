@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Button, Header } from 'react-native-elements';
 
 import { showMessage, hideMessage } from "react-native-flash-message";
 
@@ -14,21 +14,32 @@ const BIOS = [
 ];
 
 export default function App() {
+  const [index, setIndex] = useState(0);
+
   return (
     <View style={styles.container}>
-        <View style={{ flex: 2, backgroundColor: '#0779e4', alignItems: 'center', justifyContent: 'center' }}>
-        <TouchableOpacity onPress={() => showMessage({message: "copied", type: 'info'})}>
-          <Text style={{ color: 'black', fontSize: 37, textAlign: 'center', fontFamily: 'Helvetica' }}>" {BIOS[0]} "</Text>
+      <View style={{ flex: 2, backgroundColor: '#0779e4', alignItems: 'center', justifyContent: 'center', paddingLeft: 5, paddingRight: 5 }}>
+        <TouchableOpacity onPress={() => showMessage({ message: "copied", type: 'info' })}>
+          <Text style={{ color: 'black', fontSize: 33, textAlign: 'center', fontFamily: 'Helvetica' }}>" {BIOS[index]} "</Text>
         </TouchableOpacity>
-        </View>
+      </View>
       <View style={{ flex: 1, backgroundColor: '#abf0e9', alignItems: 'center', justifyContent: 'center' }}>
-        <Button title='Generate' containerViewStyle={{ width: '100%'  }} color='#0779e4' titleStyle={{
+        <Button title='Generate' containerViewStyle={{ width: '100%' }} color='#0779e4' titleStyle={{
           color: "white",
-          fontSize: 30,
+          fontSize: 25,
           padding: 12,
           paddingBottom: 10,
           paddingTop: 10,
-        }}> </Button>
+        }}
+        onPress={()=> {
+          if(index >= BIOS.length-1){
+            setIndex(0);
+          }
+          else{
+            setIndex(index+1)}
+          }
+        }
+        > </Button>
       </View>
     </View>
   );
